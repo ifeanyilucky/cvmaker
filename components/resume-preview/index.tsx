@@ -5,13 +5,13 @@ import { ResumeProps, experienceProps } from '../../types/resume';
 export default function ResumePreview({ values }: { values: ResumeProps }) {
   const { biography, email, firstName, position, experience } = values;
   return (
-    <Wrapper>
+    <Wrapper id='printableArea'>
       <div className='row'>
-        <div className='col-7'>
-          <h3 className='display-6'>{firstName}</h3>
+        <div className='col-8'>
+          <h2 className='font-w-700'>{firstName}</h2>
           <p className='text-muted'>{position}</p>
         </div>
-        <div className='col-5 bg-transparent small'>
+        <div className='col-4 bg-transparent small'>
           <p className='text-muted'>
             123 Your street,
             <br />
@@ -27,7 +27,7 @@ export default function ResumePreview({ values }: { values: ResumeProps }) {
       <hr />
       <div className='row'>
         <div className='col-4'>
-          <h6>Biography</h6>{' '}
+          <h6 className='font-w-700'>Biography</h6>{' '}
         </div>
         <div className='col-8'>
           <p className='text-muted small'>{biography}</p>
@@ -36,7 +36,7 @@ export default function ResumePreview({ values }: { values: ResumeProps }) {
       <hr />
       <div className='row'>
         <div className='col-4'>
-          <h6>Work experience</h6>
+          <h6 className='font-w-700'>Work experience</h6>
         </div>
         <div className='col-8'>
           {experience.map((ex: experienceProps, idx: number) => (
@@ -60,8 +60,15 @@ export default function ResumePreview({ values }: { values: ResumeProps }) {
 
 const Wrapper = styled.div`
   background-color: #fff;
-  height: 600px;
-  width: 490px;
-  min-width: 490px;
+  height: 842px;
+  width: 595px;
+  min-width: 595px;
+  min-height: 842px;
   padding: 1.4rem;
+  scale: 0.65;
+  transform: translateY(-200px);
+  /* position: absolute; */
+  p {
+    font-size: 12px;
+  }
 `;

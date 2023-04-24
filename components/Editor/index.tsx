@@ -14,7 +14,7 @@ export default function Editor({
     <Wrapper>
       <div className='container-fluid'>
         <div className='flex'>
-          <h3 className=''>Personal details</h3>
+          <h3 className='font-w-700'>Personal details</h3>
           <h3 className=''>Language</h3>
         </div>
         <div>
@@ -53,7 +53,7 @@ export default function Editor({
           <div className='form-wrapper'>
             <h5
               contentEditable
-              className='editable'
+              className='editable font-w-700'
               onChange={(e) => console.log(e)}
             >
               Short bio
@@ -77,7 +77,7 @@ export default function Editor({
           <Experience values={values} setValues={setValues} />
           <hr />
           <div className='form-wrapper'>
-            <h5>Skills</h5>
+            <h5 className='font-w-700'>Skills</h5>
             <p className='small'>
               Got some skills you would like to share with your potential
               employer? Feel free to add them below.
