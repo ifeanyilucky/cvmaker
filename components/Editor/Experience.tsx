@@ -30,7 +30,7 @@ export default function Experience({
   return (
     <>
       <div className='form-wrapper'>
-        <h5>Work experience</h5>
+        <h5 className='font-w-700'>Work experience</h5>
         <p className='small'>
           Include your relevant experience from the last 10 years and dates in
           this section. List your most recent position first.
