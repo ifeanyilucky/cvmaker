@@ -1,5 +1,6 @@
 import React, { useLayoutEffect, useRef } from 'react';
 import styled from 'styled-components';
+import Link from 'next/link';
 import { gsap } from 'gsap';
 
 export default function LandingHero() {
@@ -30,6 +31,11 @@ export default function LandingHero() {
           ease: 'Power3.easeOut',
           duration: 2,
           delay: 0,
+        })
+        .to('#hero-image', {
+          delay: 0,
+          duration: 1,
+          css: { scale: 1 },
         });
     }, root);
     return () => ctx.revert();
@@ -51,7 +57,13 @@ export default function LandingHero() {
             <div className='mt-3'>
               <div className='blob'>
                 You&lsquo;ll have <strong>65% more </strong>chance to get hired.{' '}
-                <strong>Read paper</strong>
+                <Link href='/templates'>
+                  <strong
+                    style={{ textDecoration: 'underline', cursor: 'pointer' }}
+                  >
+                    See templates
+                  </strong>
+                </Link>
               </div>
             </div>
           </div>
