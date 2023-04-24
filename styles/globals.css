@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap');
 @import url('./bootstrap.css');
 :root {
-  --theme-primary: #1b21dd;
+  --theme-primary: #d2a719;
   --white: #fafafa;
   --black: #0d1442;
   --accent: #152ba2;
@@ -57,7 +57,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: 'Plus Jakarta Sans', sans-serif;
-  /* line-height: 1; */
+  font-weight: 500;
 }
 
 a {
@@ -78,11 +78,11 @@ button {
 }
 
 .primary-button {
-  background-color: #d2a719;
+  background-color: var(--theme-primary);
   color: #fff;
   border-radius: 3rem;
   font-size: 0.8rem;
-  padding: 12px 18px;
+  padding: 16px 25px;
   transition: 0.3s all ease-in-out;
 }
 .primary-button:hover {
@@ -93,4 +93,7 @@ button {
 }
 .primary-button.secondary:hover {
   background-color: #b5b5b5;
+}
+.font-w-700 {
+  font-weight: 700;
 }
