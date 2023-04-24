@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { ResumeProps } from '../../types/resume';
 import Experience from './Experience';
+import RichTextEditor from './RichTextEditor';
 
 export default function Editor({
   values,
@@ -63,9 +64,8 @@ export default function Editor({
               looking at a CV. Keep it short and concise. Write about yourself
               and your experience in 3-4 sentences.
             </p>
-
-            <textarea
-              placeholder='eg "Highly-motivated communication sciences graduate, eager to leverage my passion for digital marketing. Experienced in developing in developing and implementing end-to-end digital marketing campaigns in multinational companies with strong time management, communication, and interpersonal skills.'
+            <RichTextEditor
+              placeholder={`eg "Highly-motivated communication sciences graduate, eager to leverage my passion for digital marketing. Experienced in developing in developing and implementing end-to-end digital marketing campaigns in multinational companies with strong time management, communication, and interpersonal skills.`}
               rows={5}
               cols={50}
               className='form'
