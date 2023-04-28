@@ -7,7 +7,7 @@ export default function LandingTemplate() {
       <div className='container py-5'>
         <div className='row py-3'>
           <div className='mx-auto col-md-10 text-center'>
-            <h3 className='display-4 font-w-700'>
+            <h3 className='display-4 font-w-900'>
               Chose from our eye-catching template
             </h3>
             <div className='px-md-5'>

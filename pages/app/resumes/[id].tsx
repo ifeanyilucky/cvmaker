@@ -57,45 +57,49 @@ export default function ResumeEdit() {
             : `${values.firstName} ${values?.lastName} CV`
         }
       />
-      <div className='container-fluid'>
-        <div className='row'>
-          <div className='col-md-6'>
-            <div className='resume-wrapper'>
-              <div className='editor'>
-                <Editor values={values} setValues={setValues} />
-              </div>
-            </div>
-          </div>
-          <div
-            className='col-md-6 position-relative preview-section'
-            ref={previewRoot}
-          >
-            <div className='position-fixed top-0 '>
-              <div className='d-flex justify-content-center'>
-                <p>Page 1 of 1</p>
-              </div>
-
-              {/* <ResumePreview values={values} /> */}
-              <div className='preview-wrapper'>
-                <div className='preview' id='printableArea'>
-                  <selectedTemplate.element values={values} />
+      {!selectedTemplate && !selectedTemplate?.element ? (
+        <h4>Loading...</h4>
+      ) : (
+        <div className='container-fluid'>
+          <div className='row'>
+            <div className='col-md-6'>
+              <div className='resume-wrapper'>
+                <div className='editor'>
+                  <Editor values={values} setValues={setValues} />
                 </div>
               </div>
+            </div>
+            <div
+              className='col-md-6 position-relative preview-section'
+              ref={previewRoot}
+            >
+              <div className='position-fixed top-0 '>
+                <div className='d-flex justify-content-center'>
+                  <p>Page 1 of 1</p>
+                </div>
 
-              <div className='d-flex py-3 justify-content-center action-button'>
-                <button
-                  className='primary-button secondary'
-                  onClick={handlePrint}
-                >
-                  Print CV
-                </button>
-                <div className='mx-2' />
-                <button className='primary-button'>Download CV</button>
+                {/* <ResumePreview values={values} /> */}
+                <div className='preview-wrapper'>
+                  <div className='preview' id='printableArea'>
+                    <selectedTemplate.element values={values} />
+                  </div>
+                </div>
+
+                <div className='d-flex py-3 justify-content-center action-button'>
+                  <button
+                    className='primary-button secondary'
+                    onClick={handlePrint}
+                  >
+                    Print CV
+                  </button>
+                  <div className='mx-2' />
+                  <button className='primary-button'>Download CV</button>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </Wrapper>
   );
 }
@@ -109,9 +113,9 @@ const Wrapper = styled.div`
     }
   }
 
-  .col-md-6:last-child {
+  /* .col-md-6:last-child {
     background: rgb(240, 240, 240);
-  }
+  } */
   .preview-section {
     display: flex;
     flex-direction: column;

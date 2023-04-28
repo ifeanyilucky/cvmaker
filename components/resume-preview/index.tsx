@@ -8,7 +8,7 @@ export default function ResumePreview({ values }: { values: ResumeProps }) {
     <Wrapper id='printableArea'>
       <div className='row'>
         <div className='col-8'>
-          <h2 className='font-w-700'>{firstName}</h2>
+          <h2 className='font-w-900'>{firstName}</h2>
           <p className='text-muted'>{position}</p>
         </div>
         <div className='col-4 bg-transparent small'>
@@ -27,7 +27,7 @@ export default function ResumePreview({ values }: { values: ResumeProps }) {
       <hr />
       <div className='row'>
         <div className='col-4'>
-          <h6 className='font-w-700'>Biography</h6>{' '}
+          <h6 className='font-w-900'>Biography</h6>{' '}
         </div>
         <div className='col-8'>
           <p className='text-muted small'>{biography}</p>
@@ -36,7 +36,7 @@ export default function ResumePreview({ values }: { values: ResumeProps }) {
       <hr />
       <div className='row'>
         <div className='col-4'>
-          <h6 className='font-w-700'>Work experience</h6>
+          <h6 className='font-w-900'>Work experience</h6>
         </div>
         <div className='col-8'>
           {experience.map((ex: experienceProps, idx: number) => (

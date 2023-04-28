@@ -96,10 +96,28 @@ button {
 .primary-button.secondary:hover {
   background-color: #b5b5b5;
 }
-.font-w-700 {
-  font-weight: 700;
+.font-w-900 {
+  font-weight: 900;
 }
-
+.form {
+  appearance: none;
+  color: rgb(0, 0, 0);
+  border: none;
+  box-shadow: rgb(224, 224, 224) 0px 0px 0px 1px;
+  height: 60px;
+  outline: none;
+  border-radius: 4px;
+  background: rgb(240, 240, 240);
+  font-size: 16px;
+  line-height: 22px;
+  transition: box-shadow 350ms ease-in-out 0s, background 250ms ease-in-out 0s;
+  width: 100%;
+  padding: 0px 20px;
+}
+textarea {
+  height: auto !important;
+  padding: 30px auto !important;
+}
 /* feature slides */
 .feature-slides-container {
   display: grid;

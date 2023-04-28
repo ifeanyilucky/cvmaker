@@ -8,7 +8,7 @@ export default function CTA() {
       <div className='container py-5'>
         <div className='row py-5'>
           <div className='col-md-6 mx-auto'>
-            <h3 className='display-4 font-w-700'>
+            <h3 className='display-4 font-w-900'>
               Land your perfect job with CV Maker
             </h3>
             <p className='mt-4 mx-5'>

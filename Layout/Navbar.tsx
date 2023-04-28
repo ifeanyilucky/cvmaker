@@ -16,7 +16,7 @@ export default function Navbar() {
       <div className='container py-4'>
         <nav>
           <div className='nav-logo'>
-            <h3 className='font-w-700'>CVmaker</h3>
+            <h3 className='font-w-900'>CVmaker</h3>
           </div>
           <ul className='nav-list'>
             <li className='nav-item'>

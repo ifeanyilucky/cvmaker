@@ -30,7 +30,7 @@ export default function Experience({
   return (
     <>
       <div className='form-wrapper'>
-        <h5 className='font-w-700'>Work experience</h5>
+        <h4 className='font-w-900'>Work experience</h4>
         <p className='small'>
           Include your relevant experience from the last 10 years and dates in
           this section. List your most recent position first.
@@ -38,7 +38,7 @@ export default function Experience({
         {values.experience.map((experience: experienceProps, idx: number) => (
           <div className='experience' key={idx}>
             <div className='form-wrapper'>
-              <label>Job title</label>
+              <label className='form-label text-muted '>Job title</label>
               <input
                 className='form'
                 placeholder='e.g Frontend developer'
@@ -52,7 +52,7 @@ export default function Experience({
               />
             </div>
             <div className='form-wrapper'>
-              <label>Company/Employer</label>
+              <label className='form-label text-muted '>Company/Employer</label>
               <input
                 className='form'
                 placeholder='Enter company name'
@@ -67,7 +67,7 @@ export default function Experience({
               />
             </div>
             <div className='form-wrapper'>
-              <label>Period</label>
+              <label className='form-label text-muted'>Period</label>
               <div className='d-flex'>
                 <input
                   className='form'
@@ -93,7 +93,7 @@ export default function Experience({
               </div>
             </div>
             <div className='form-wrapper'>
-              <label>Location</label>
+              <label className='form-label text-muted'>Location</label>
               <input
                 className='form'
                 placeholder='Enter location'
