@@ -1,14 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import { resumeDefault } from '../../types/resume';
+import { ResumeProps } from '../../types/resume';
 
-export default function Simmple() {
-  const values = resumeDefault;
+export default function Simmple({ values }: { values?: ResumeProps }) {
   return (
     <Wrapper>
       <div className='header'>
         <h3 className='display-6'>
-          {values.firstName} {values.lastName}
+          {`${values.firstName} ${values.lastName}`}
         </h3>
         <p>{values.position}</p>
         <hr />
@@ -80,7 +79,7 @@ export default function Simmple() {
 const Wrapper = styled.div`
   background-color: #fff;
   overflow: hidden;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   height: 842px;
   width: 595px;
   min-width: 595px;

@@ -1,43 +1,46 @@
-import React, { useEffect } from 'react';
-import Page from '../Layout/Page';
-import { Borderless, Minimmal, Simmple } from '../components/templates';
+import React from 'react';
 import styled from 'styled-components';
-import * as htmlToImage from 'html-to-image';
+import { NextRouter, useRouter } from 'next/router';
+import { templates } from '../components/templates';
+import Page from '../Layout/Page';
+import { resumeDefault } from '../types/resume';
 
 export default function Templates() {
-  const templates: { element: () => JSX.Element; title: string }[] = [
-    { element: Borderless, title: 'Borderless' },
-    { element: Minimmal, title: 'Minimmal' },
-    { element: Simmple, title: 'Simmple' },
-  ];
   const resumeEl = React.useRef(null);
-
-  useEffect(() => {
-    // (async () => {
-    //   const dataUrl = await htmlToImage.toJpeg(resumeEl.current);
-    //   console.log(dataUrl);
-    // })();
-  }, []);
-  const convertImage = async () => {
-    const dataUrl = await htmlToImage.toJpeg(resumeEl.current);
-    const imgTag = document.createElement('img');
-    imgTag.src = dataUrl;
-    console.log(dataUrl);
-  };
-
+  const router: NextRouter = useRouter();
   return (
     <Wrapper>
       <Page title='CV Templates' />
+      <div className='bg-dark'>
+        <div className='container'>
+          <div className='row py-5'>
+            <div className='col-md-10 mx-auto text-center text-white'>
+              <h1 className='display-3'>Chose from our best cv template</h1>
+            </div>
+          </div>
+        </div>
+      </div>
       <div className='container'>
         <div className='row'>
           {templates.map((template, idx) => (
             <div className='col-md-6 my-4' key={idx}>
               <div className='template-wrapper'>
                 <div className='template' ref={resumeEl}>
-                  <template.element />
+                  <template.element values={resumeDefault} />
                 </div>
-                <div>
+                <div className='text-center'>
                   <h3 className='font-w-700'>{template.title}</h3>
+                  <button
+                    className='primary-button secondary'
+                    onClick={() => {
+                      router.push({
+                        query: { templateid: template.id },
+                        pathname: '/app/resumes/new',
+                      });
+                    }}
+                  >
+                    Select
+                  </button>
                 </div>
               </div>
             </div>

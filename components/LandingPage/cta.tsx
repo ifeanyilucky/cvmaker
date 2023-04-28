@@ -6,7 +6,7 @@ export default function CTA() {
   return (
     <Wrapper>
       <div className='container py-5'>
-        <div className='row'>
+        <div className='row py-5'>
           <div className='col-md-6 mx-auto'>
             <h3 className='display-4 font-w-700'>
               Land your perfect job with CV Maker

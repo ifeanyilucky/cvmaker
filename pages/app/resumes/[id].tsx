@@ -1,9 +1,11 @@
 import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
+import { useRouter } from 'next/router';
 import Editor from '../../../components/Editor';
-import ResumePreview from '../../../components/resume-preview';
+// import ResumePreview from '../../../components/resume-preview';
 import { ResumeProps } from '../../../types/resume';
 import Page from '../../../Layout/Page';
+import { templates } from '../../../components/templates';
 
 export default function ResumeEdit() {
   const [values, setValues] = React.useState<ResumeProps>({
@@ -28,6 +30,13 @@ export default function ResumeEdit() {
     skills: [],
     bioTitle: '',
   });
+
+  const { query } = useRouter();
+  console.log(query.templateid);
+
+  const selectedTemplate = templates.filter(
+    (t) => t.id === query.templateid
+  )[0];
 
   const previewRoot = useRef<HTMLDivElement>();
   // handle print
@@ -66,7 +75,12 @@ export default function ResumeEdit() {
                 <p>Page 1 of 1</p>
               </div>
 
-              <ResumePreview values={values} />
+              {/* <ResumePreview values={values} /> */}
+              <div className='preview-wrapper'>
+                <div className='preview' id='printableArea'>
+                  <selectedTemplate.element values={values} />
+                </div>
+              </div>
 
               <div className='d-flex py-3 justify-content-center action-button'>
                 <button
@@ -133,4 +147,14 @@ const Wrapper = styled.div`
       display: none;
     }
   } */
+  .preview-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .preview {
+      scale: 0.65;
+      transform: translateY(-200px);
+    }
+  }
 `;
