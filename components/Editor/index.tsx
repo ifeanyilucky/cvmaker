@@ -4,6 +4,7 @@ import { ResumeProps } from '../../types/resume';
 import Experience from './Experience';
 import RichTextEditor from './RichTextEditor';
 import InputTag from '../inputTag';
+import Education from './Education';
 
 export default function Editor({
   values,
@@ -15,21 +16,33 @@ export default function Editor({
   return (
     <Wrapper>
       <div className='container-fluid'>
-        <div className='flex'>
-          <h3 className='font-w-700'>Personal details</h3>
-          <h3 className=''>Language</h3>
+        <div className='flex mt-5'>
+          <h4 className='font-w-900'>Personal details</h4>
         </div>
         <div>
-          <div className='form-wrapper'>
-            <label className='form-label text-muted'>First name</label>
-            <input
-              type='text'
-              placeholder='First name'
-              className='form'
-              onChange={(e) =>
-                setValues({ ...values, firstName: e.target.value })
-              }
-            />
+          <div className='form-wrapper d-flex justify-content-between'>
+            <div>
+              <label className='form-label text-muted'>First name</label>
+              <input
+                type='text'
+                placeholder='First name'
+                className='form'
+                onChange={(e) =>
+                  setValues({ ...values, firstName: e.target.value })
+                }
+              />
+            </div>
+            <div>
+              <label className='form-label text-muted'>Last name</label>
+              <input
+                type='text'
+                placeholder='Last name'
+                className='form'
+                onChange={(e) =>
+                  setValues({ ...values, lastName: e.target.value })
+                }
+              />
+            </div>
           </div>
           <div className='form-wrapper'>
             <label className='form-label text-muted'>Email</label>
@@ -53,13 +66,13 @@ export default function Editor({
           </div>
           <hr />
           <div className='form-wrapper'>
-            <h5
+            <h4
               contentEditable
-              className='editable font-w-700'
+              className='editable font-w-900'
               onChange={(e) => console.log(e)}
             >
               Short bio
-            </h5>
+            </h4>
             <p className='small'>
               Short bio Recruiters and HR managers spend an average of 6 seconds
               looking at a CV. Keep it short and concise. Write about yourself
@@ -78,7 +91,7 @@ export default function Editor({
           <Experience values={values} setValues={setValues} />
           <hr />
           <div className='form-wrapper'>
-            <h5 className='font-w-700'>Skills</h5>
+            <h4 className='font-w-900'>Skills</h4>
             <p className='small'>
               Got some skills you would like to share with your potential
               employer? Feel free to add them below.
@@ -93,6 +106,8 @@ export default function Editor({
               />
             </div>
           </div>
+          <hr />
+          <Education setValues={setValues} values={values} />
         </div>
       </div>
     </Wrapper>
@@ -100,16 +115,9 @@ export default function Editor({
 }
 const Wrapper = styled.div`
   .form-wrapper {
-    margin: 10px 0;
+    margin: 30px 0;
     .form-label {
       /* padding-bottom: 5px !important; */
-    }
-    .form {
-      width: 100%;
-      height: 100%;
-      border: 1px solid #b6b6b6;
-      padding: 17px 18px;
-      border-radius: 5px;
     }
   }
 `;

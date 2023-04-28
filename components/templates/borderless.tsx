@@ -9,7 +9,7 @@ export default function Borderless({ values }: { values: ResumeProps }) {
         <div className='title'>
           <p>{values.position}</p>
         </div>
-        <h3 className='display-6 font-w-700'>
+        <h3 className='display-6 font-w-900'>
           {values.firstName} {values.lastName}
         </h3>
         <p className='paragraph pt-3'>{values.biography}</p>

@@ -46,7 +46,7 @@ export default function LandingHero() {
       <div className='container py-5'>
         <div className='row mt-2 align-items-center'>
           <div className='col-md-6 mt-5'>
-            <h3 className='display-2 font-w-700'>Create your CV like a pro</h3>
+            <h3 className='display-2 font-w-900'>Create your CV like a pro</h3>
             <p className='text-muted'>
               Create your new CV today using CV Makers all-new intelligent
               resume creation platform.

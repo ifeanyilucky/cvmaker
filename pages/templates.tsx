@@ -29,7 +29,7 @@ export default function Templates() {
                   <template.element values={resumeDefault} />
                 </div>
                 <div className='text-center'>
-                  <h3 className='font-w-700'>{template.title}</h3>
+                  <h3 className='font-w-900'>{template.title}</h3>
                   <button
                     className='primary-button secondary'
                     onClick={() => {
