@@ -1,9 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { resumeDefault } from '../../types/resume';
+import { ResumeProps } from '../../types/resume';
 
-export default function MinimaTemplate() {
-  const values = resumeDefault;
+export default function MinimaTemplate({ values }: { values: ResumeProps }) {
   return (
     <Wrapper>
       <div className='header'>
@@ -79,7 +78,7 @@ export default function MinimaTemplate() {
 const Wrapper = styled.div`
   background-color: #fff;
   overflow: hidden;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   height: 842px;
   width: 595px;
   min-width: 595px;

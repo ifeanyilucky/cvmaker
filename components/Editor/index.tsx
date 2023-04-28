@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { ResumeProps } from '../../types/resume';
 import Experience from './Experience';
 import RichTextEditor from './RichTextEditor';
+import InputTag from '../inputTag';
 
 export default function Editor({
   values,
@@ -64,7 +65,7 @@ export default function Editor({
               looking at a CV. Keep it short and concise. Write about yourself
               and your experience in 3-4 sentences.
             </p>
-            <RichTextEditor
+            <textarea
               placeholder={`eg "Highly-motivated communication sciences graduate, eager to leverage my passion for digital marketing. Experienced in developing in developing and implementing end-to-end digital marketing campaigns in multinational companies with strong time management, communication, and interpersonal skills.`}
               rows={5}
               cols={50}
@@ -84,6 +85,7 @@ export default function Editor({
             </p>
             <div className='form-wrapper'>
               <label className='form-label text-muted'>Add a skill</label>
+              <InputTag values={values} setValues={setValues} />
               <input
                 type='text'
                 placeholder='Enter skill name'
