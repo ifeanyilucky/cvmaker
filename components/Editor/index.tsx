@@ -5,6 +5,8 @@ import Experience from './Experience';
 import RichTextEditor from './RichTextEditor';
 import InputTag from '../inputTag';
 import Education from './Education';
+import AdditionalInfo from './AdditionalInfo';
+import Textarea from '../Textarea';
 
 export default function Editor({
   values,
@@ -13,15 +15,17 @@ export default function Editor({
   values: ResumeProps;
   setValues: React.Dispatch<React.SetStateAction<ResumeProps>>;
 }) {
+  const [additionalInfoOpen, setAdditionalInfoOpen] =
+    React.useState<boolean>(false);
   return (
     <Wrapper>
       <div className='container-fluid'>
         <div className='flex mt-5'>
           <h4 className='font-w-900'>Personal details</h4>
         </div>
-        <div>
-          <div className='form-wrapper d-flex justify-content-between'>
-            <div>
+        <div className='my-5'>
+          <div className='row justify-content-between'>
+            <div className='col-md-6'>
               <label className='form-label text-muted'>First name</label>
               <input
                 type='text'
@@ -32,7 +36,7 @@ export default function Editor({
                 }
               />
             </div>
-            <div>
+            <div className='col-md-6'>
               <label className='form-label text-muted'>Last name</label>
               <input
                 type='text'
@@ -47,7 +51,7 @@ export default function Editor({
           <div className='form-wrapper'>
             <label className='form-label text-muted'>Email</label>
             <input
-              type='text'
+              type='email'
               placeholder='Email'
               className='form'
               onChange={(e) => setValues({ ...values, email: e.target.value })}
@@ -64,6 +68,26 @@ export default function Editor({
               }
             />
           </div>
+          <div className='text-right'>
+            <a
+              className='link'
+              onClick={() => {
+                if (additionalInfoOpen === false) {
+                  setAdditionalInfoOpen(true);
+                } else {
+                  setAdditionalInfoOpen(false);
+                }
+              }}
+            >
+              Additional Information
+            </a>
+          </div>
+          {additionalInfoOpen ? (
+            <AdditionalInfo values={values} setValues={setValues} />
+          ) : (
+            ''
+          )}
+
           <hr />
           <div className='form-wrapper'>
             <h4
@@ -78,16 +102,15 @@ export default function Editor({
               looking at a CV. Keep it short and concise. Write about yourself
               and your experience in 3-4 sentences.
             </p>
-            <textarea
+            <Textarea
               placeholder={`eg "Highly-motivated communication sciences graduate, eager to leverage my passion for digital marketing. Experienced in developing in developing and implementing end-to-end digital marketing campaigns in multinational companies with strong time management, communication, and interpersonal skills.`}
-              rows={5}
-              cols={50}
-              className='form'
+              classNames='form'
               onChange={(e) =>
                 setValues({ ...values, biography: e.target.value })
               }
             />
           </div>
+          <hr />
           <Experience values={values} setValues={setValues} />
           <hr />
           <div className='form-wrapper'>
@@ -98,11 +121,11 @@ export default function Editor({
             </p>
             <div className='form-wrapper'>
               <label className='form-label text-muted'>Add a skill</label>
-              <InputTag values={values} setValues={setValues} />
-              <input
-                type='text'
+              <InputTag
                 placeholder='Enter skill name'
-                className='form'
+                classNames='form'
+                values={values}
+                setValues={setValues}
               />
             </div>
           </div>
@@ -119,5 +142,8 @@ const Wrapper = styled.div`
     .form-label {
       /* padding-bottom: 5px !important; */
     }
+  }
+  .text-right {
+    text-align: right;
   }
 `;

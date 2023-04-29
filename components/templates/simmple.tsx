@@ -6,10 +6,23 @@ export default function Simmple({ values }: { values?: ResumeProps }) {
   return (
     <Wrapper>
       <div className='header'>
-        <h3 className='display-6'>
-          {`${values.firstName} ${values.lastName}`}
-        </h3>
-        <p>{values.position}</p>
+        <div className='row'>
+          <div className='col-md-8'>
+            <h3 className='display-6'>
+              {`${values.firstName} ${values.lastName}`}
+            </h3>
+            <p>{values.position}</p>
+          </div>
+          <div className='col-md-4'>
+            <p className='text-muted'>
+              {values.phoneNumber} <br />
+              {values.email} <br />
+              {values.linkedIn} <br />
+              {values.address} <br />
+            </p>
+          </div>
+        </div>
+
         <hr />
       </div>
       <div className='content'>
@@ -90,8 +103,8 @@ const Wrapper = styled.div`
     padding-bottom: 0;
 
     h3 {
-      letter-spacing: 4px;
-      font-weight: 600;
+      /* letter-spacing: 4px; */
+      font-weight: 900;
     }
   }
   p {

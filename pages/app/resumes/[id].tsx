@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
 import Editor from '../../../components/Editor';
@@ -12,17 +12,11 @@ export default function ResumeEdit() {
     biography: '',
     education: [],
     email: '',
-    experience: [
-      {
-        companyName: '',
-        end: '',
-        id: 0,
-        jobTitle: '',
-        location: '',
-        overview: '',
-        start: '',
-      },
-    ],
+    phoneNumber: '',
+    address: '',
+    linkedIn: '',
+    website: '',
+    experience: [],
     firstName: '',
     id: '',
     lastName: '',
@@ -113,10 +107,8 @@ const Wrapper = styled.div`
     }
   }
 
-  /* .col-md-6:last-child {
-    background: rgb(240, 240, 240);
-  } */
   .preview-section {
+    background: rgb(240, 240, 240);
     display: flex;
     flex-direction: column;
     align-items: center;

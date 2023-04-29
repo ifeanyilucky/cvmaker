@@ -7,13 +7,13 @@ export const featureSlides: {
     title: 'Complete control',
     description:
       'Every decision, from how you create your cv is for your own future sake, start creating your cv right now',
-    imageUrl: 'static/images/cvmaker-user.png',
+    imageUrl: 'static/images/resume/resume1.png',
   },
   {
     title: 'Immersive',
     description:
       'Every decision, from how you create your cv is for your own future sake, start creating your cv right now',
-    imageUrl: 'static/images/cvmaker-user.png',
+    imageUrl: 'static/images/resume/1.webp',
   },
   {
     title: 'Onbrand',

@@ -64,6 +64,9 @@ a {
   color: inherit;
   text-decoration: none;
 }
+p {
+  margin-bottom: 10px !important;
+}
 
 * {
   box-sizing: border-box;
@@ -117,6 +120,29 @@ button {
 textarea {
   height: auto !important;
   padding: 30px auto !important;
+}
+.link {
+  color: var(--theme-primary);
+  cursor: pointer;
+  text-decoration: underline;
+}
+.tag-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+.tag-wrapper .tag {
+  background-color: #f0f0f0;
+  margin: 0 10px;
+  padding: 5px 0 5px 10px;
+  font-size: 12px;
+  border-radius: 20px;
+  margin: 5px;
+}
+.tag-wrapper .tag button {
+  background-color: red;
+  color: #fff;
+  border-radius: 12px;
+  margin: 0 5px;
 }
 /* feature slides */
 .feature-slides-container {

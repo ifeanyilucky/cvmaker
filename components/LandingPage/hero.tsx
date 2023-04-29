@@ -10,7 +10,8 @@ export default function LandingHero() {
   useLayoutEffect(() => {
     const ctx: gsap.Context = gsap.context(() => {
       // move up animation first image wrapper
-      tl.current = gsap
+      tl.current = gsap.timeline();
+      gsap
         .timeline()
         .from('.image-wrapper', {
           y: 600,
@@ -18,35 +19,55 @@ export default function LandingHero() {
           duration: 1,
           visibility: 'invisible',
         })
+
+        .to('.image-wrapper', { y: 0 })
+
+        .from(
+          '#hero-image',
+          {
+            css: { scale: 2 },
+            ease: 'Power3.easeOut',
+            duration: 1.2,
+            delay: 0,
+          },
+          1.6
+        )
+        .to(
+          '#hero-image',
+          {
+            delay: 0,
+            duration: 2,
+            css: { scale: 1 },
+          },
+          1.4
+        );
+      gsap
+        .timeline()
         .from('.image-wrapper-two', {
           y: 600,
           ease: 'Power3.easeOut',
           duration: 1,
           visibility: 'invisible',
         })
-        .to('.image-wrapper', { y: 0 })
-        .to('.image-wrapper-two', { y: 0 })
-        .from('#hero-image', {
-          css: { scale: 2 },
-          ease: 'Power3.easeOut',
-          duration: 2,
-          delay: 0,
-        })
-        .to('#hero-image', {
-          delay: 0,
-          duration: 1,
-          css: { scale: 1 },
-        });
+        .to('.image-wrapper-two', { y: 0 });
+
+      gsap
+        .timeline()
+        .from('.display-5', { y: 44, ease: 'Power3.easeOut', delay: 0.8 }, 0.15)
+        .from('.text-muted', { y: 20, opacity: 0, ease: 'Power3.easeOut' }, 1.4)
+        .from('.primary-button', { y: 20, opacity: 0, ease: 'Power3.easeOut' });
     }, root);
     return () => ctx.revert();
   }, [root]);
 
   return (
-    <Wrapper ref={root}>
+    <Wrapper ref={root} className='pb-5'>
       <div className='container py-5'>
         <div className='row mt-2 align-items-center'>
           <div className='col-md-6 mt-5'>
-            <h3 className='display-2 font-w-900'>Create your CV like a pro</h3>
+            <h3 className='display-2 font-w-900 header'>
+              Create your CV like a pro
+            </h3>
             <p className='text-muted'>
               Create your new CV today using CV Makers all-new intelligent
               resume creation platform.
@@ -74,7 +95,7 @@ export default function LandingHero() {
               </div>
               <div className='mx-3' />
               <div className='image-wrapper-two'>
-                <img id='hero-image' src='/static/images/cvmaker-user.png' />
+                <img id='hero-image' src='/static/images/Vector.jpg' />
               </div>
             </div>
           </div>
@@ -96,7 +117,7 @@ const Wrapper = styled.div`
     height: 360px;
     width: 70%;
     background-color: var(--theme-secondary);
-    border-top-right-radius: 50px;
+    /* border-top-right-radius: 50px; */
     border-bottom-left-radius: 50px;
     overflow: hidden;
     margin-top: 6rem;
@@ -111,7 +132,7 @@ const Wrapper = styled.div`
     width: 70%;
     background-color: var(--theme-secondary);
     border-top-right-radius: 50px;
-    border-bottom-left-radius: 50px;
+    /* border-bottom-left-radius: 50px; */
     overflow: hidden;
 
     img {
