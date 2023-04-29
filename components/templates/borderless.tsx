@@ -35,10 +35,28 @@ export default function Borderless({ values }: { values: ResumeProps }) {
                   {exp.companyName}, {exp.location}
                 </p>
                 <p className='text-muted'>{exp.overview}</p>
+                <hr />
               </div>
             ))}
           </div>
           <div className='col-4'>
+            <div className='title mb-3'>
+              <p>Contact</p>
+            </div>
+            <div>
+              <p>
+                {values.email}
+                <br />
+                {values.phoneNumber}
+                <br />
+                <a href={values.website}>{values.website}</a>
+                <br />
+                <a href={values.linkedIn}>{values.linkedIn}</a>
+                <br />
+                {values.address}
+                <br />
+              </p>
+            </div>
             <div className='title mb-3'>
               <p>Education</p>
             </div>
@@ -87,8 +105,8 @@ const Wrapper = styled.div`
     padding: 1rem 1.6rem;
 
     h3 {
-      letter-spacing: 4px;
-      font-weight: 600;
+      /* letter-spacing: 4px; */
+      font-weight: 800;
     }
   }
   p {
@@ -97,9 +115,10 @@ const Wrapper = styled.div`
 
   .content {
     padding: 1.6rem;
+    padding-top: 0 !important;
   }
   .title {
-    border: 2px solid #242424;
+    border: 1.7px solid #242424;
     padding: 7px 10px;
     display: inline-block;
     text-transform: uppercase !important;

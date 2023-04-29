@@ -61,9 +61,12 @@ const Wrapper = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 
     .template {
-      transform: scale(0.75);
+      scale: 0.75;
+
+      transform: translateY(-30px);
     }
   }
 `;

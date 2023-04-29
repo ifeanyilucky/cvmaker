@@ -20,10 +20,14 @@ export interface educationProps {
 export interface ResumeProps {
   firstName: string;
   lastName: string;
+  phoneNumber: string;
   email: string;
   position: string;
   biography: string;
   bioTitle: string;
+  website: string;
+  address: string;
+  linkedIn: string;
   skills: Array<string>;
   experience: Array<experienceProps>;
   education: Array<educationProps>;
@@ -40,6 +44,10 @@ export const resumeDefault: ResumeProps = {
   biography: `Highly-motivated communication sciences graduate, eager to leverage my passion for digital marketing. Experienced in developing in developing and implementing end-to-end digital marketing campaigns in multinational companies with strong time management, communication, and interpersonal skills.`,
   bioTitle: 'Profile',
   id: '6789oij',
+  address: 'Lagos, Nigeria',
+  linkedIn: 'https://linkedin.com/ifeanyilucky-4485848',
+  phoneNumber: '08123171411',
+  website: 'https://ifeanyilucky.vercel.app',
   education: [
     {
       degree: 'BSc. Accounting',

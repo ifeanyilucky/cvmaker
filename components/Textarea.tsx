@@ -1,12 +1,39 @@
 import React from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 
-export default function Textarea({ others }: { others: any }) {
+export default function Textarea({
+  placeholder,
+  onChange,
+  classNames,
+}: {
+  placeholder: string;
+  onChange: any;
+  classNames: string;
+}) {
   const [completedTyping, setCompletedTyping] = React.useState(false);
+  const [completedText, setCompletedText] = React.useState('');
+
+  const generateText = async () => {
+    setCompletedTyping(true);
+
+    await axios
+      .post('/api/completion-ai', { text: '' })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <Wrapper>
       <div className='textarea-wrapper'>
-        <input {...others} />
+        <input
+          placeholder={placeholder}
+          className={classNames}
+          onChange={onChange}
+        />
         <span>
           {!completedTyping && (
             <svg
@@ -18,6 +45,7 @@ export default function Textarea({ others }: { others: any }) {
             </svg>
           )}
         </span>
+        <button onClick={generateText}>Generate</button>
       </div>
     </Wrapper>
   );

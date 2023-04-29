@@ -11,6 +11,16 @@ export default function MinimaTemplate({ values }: { values: ResumeProps }) {
         </h3>
         <p>{values.position}</p>
       </div>
+      <div className='text-center py-3'>
+        <p className='text-muted'>
+          {values.email} | {values.phoneNumber}
+          <br />
+          {values.website}
+          <br />
+          {values.address}
+          <br />
+        </p>
+      </div>
       <div className='content'>
         <div className='row justify-content-between'>
           <div className='col-4'>
@@ -32,43 +42,46 @@ export default function MinimaTemplate({ values }: { values: ResumeProps }) {
                 <p className='text-muted'>{edu.overview}</p>
               </div>
             ))}
-            <div className='skills'>
-              <div className='title'>
-                <p>SKILLS</p>
-              </div>
-              <p className='pt-3'>
-                <div className='row'>
-                  {values.skills.map((skill, idx) => (
-                    <div className='col-6' key={idx}>
-                      <div>{skill}</div>
-                    </div>
-                  ))}
+            {values.skills.length && (
+              <div className='skills'>
+                <div className='title'>
+                  <p>SKILLS</p>
                 </div>
-              </p>
-            </div>
-          </div>
-
-          <div className='col-7'>
-            <div className='title mb-3'>
-              <p>Experience</p>
-            </div>
-            {values.experience.map((exp, index) => (
-              <div className='experience' key={index}>
-                <div className='d-flex justify-content-between'>
-                  <p>
-                    <strong>{exp.jobTitle}</strong>
-                  </p>
-                  <p>
-                    {exp.start} - {exp.end}
-                  </p>
-                </div>
-                <p>
-                  {exp.companyName}, {exp.location}
+                <p className='pt-3'>
+                  <div className='row'>
+                    {values.skills.map((skill, idx) => (
+                      <div className='col-6' key={idx}>
+                        <div>{skill}</div>
+                      </div>
+                    ))}
+                  </div>
                 </p>
-                <p className='text-muted'>{exp.overview}</p>
               </div>
-            ))}
+            )}
           </div>
+          {values.experience.length && (
+            <div className='col-7'>
+              <div className='title mb-3'>
+                <p>Experience</p>
+              </div>
+              {values.experience.map((exp, index) => (
+                <div className='experience' key={index}>
+                  <div className='d-flex justify-content-between'>
+                    <p>
+                      <strong>{exp.jobTitle}</strong>
+                    </p>
+                    <p>
+                      {exp.start} - {exp.end}
+                    </p>
+                  </div>
+                  <p>
+                    {exp.companyName}, {exp.location}
+                  </p>
+                  <p className='text-muted'>{exp.overview}</p>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </Wrapper>
@@ -86,12 +99,12 @@ const Wrapper = styled.div`
   /* transform: s); */
   .header {
     text-align: center;
-    padding: 30px 0;
+    padding: 20px 0;
     background-color: #242424;
     color: #fff;
     h3 {
-      letter-spacing: 4px;
-      font-weight: 600;
+      /* letter-spacing: 4px; */
+      font-weight: 800;
     }
   }
   p {
@@ -99,7 +112,7 @@ const Wrapper = styled.div`
   }
 
   .content {
-    padding: 1.6rem;
+    padding: 0 1.6rem;
     .title {
       background-color: #242424;
       color: #fff;
