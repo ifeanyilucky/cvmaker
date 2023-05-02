@@ -105,9 +105,9 @@ export default function Editor({
             <Textarea
               placeholder={`eg "Highly-motivated communication sciences graduate, eager to leverage my passion for digital marketing. Experienced in developing in developing and implementing end-to-end digital marketing campaigns in multinational companies with strong time management, communication, and interpersonal skills.`}
               classNames='form'
-              onChange={(e) =>
-                setValues({ ...values, biography: e.target.value })
-              }
+              textToComplete='Write a short bio for a frontend developer CV in 50 words'
+              values={values}
+              setValues={setValues}
             />
           </div>
           <hr />

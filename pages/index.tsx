@@ -15,6 +15,7 @@ export default function Home() {
   React.useEffect(() => {
     const bg: string[] = [
       '#landingTemplate',
+      '#landingAi',
       '#landingHero',
       '#landingFeatures',
     ];
@@ -36,8 +37,8 @@ export default function Home() {
             gsap.to(bg, {
               css: { backgroundColor: '#fff', color: '#000' },
             }),
-          onLeave: () =>
-            gsap.to(bg, { css: { backgroundColor: '#fff', color: '#000' } }),
+          // onLeave: () =>
+          //   gsap.to(bg, { css: { backgroundColor: '#fff', color: '#000' } }),
         },
       });
     });
@@ -51,13 +52,19 @@ export default function Home() {
       <div id='landingHero'>
         <home.LandingHero />
       </div>
+      <div id='landingAi'>
+        <home.LandingAi />
+      </div>
       <div id='landingTemplate'>
         <home.LandingTemplate />
       </div>
-      <div id='landingFeatures'>
-        <home.LandingFeatures />
+      <div id='landingFaq'>
+        <home.LandingFaq />
       </div>
       <home.CTA />
+      {/* <div id='landingFeatures'>
+        <home.LandingFeatures />
+      </div> */}
     </div>
   );
 }

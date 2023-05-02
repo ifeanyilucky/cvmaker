@@ -1,15 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import { ResumeProps } from '../types/resume';
+import Editor from './Editor';
 
 export default function Textarea({
   placeholder,
-  onChange,
+  setValues,
+  values,
   classNames,
+  textToComplete,
 }: {
   placeholder: string;
-  onChange: any;
+
+  values: ResumeProps;
+  setValues: React.Dispatch<React.SetStateAction<ResumeProps>>;
   classNames: string;
+  textToComplete: string;
 }) {
   const [completedTyping, setCompletedTyping] = React.useState(false);
   const [completedText, setCompletedText] = React.useState('');
@@ -18,9 +25,10 @@ export default function Textarea({
     setCompletedTyping(true);
 
     await axios
-      .post('/api/completion-ai', { text: '' })
-      .then((res) => {
-        console.log(res);
+      .post('/api/completion-ai', { text: textToComplete })
+      .then(({ data }) => {
+        setCompletedText(data.message);
+        setValues({ ...values, biography: data.message });
       })
       .catch((err) => {
         console.log(err);
@@ -32,8 +40,10 @@ export default function Textarea({
         <input
           placeholder={placeholder}
           className={classNames}
-          onChange={onChange}
+          onChange={(e) => setValues({ ...values, biography: e.target.value })}
+          // value={completedText || values.biography}
         />
+        <Editor placeholder={'Write something...'} />
         <span>
           {!completedTyping && (
             <svg
@@ -52,6 +62,8 @@ export default function Textarea({
 }
 
 const Wrapper = styled.div`
+  position: relative;
+  width: 100%;
   .textarea-wrapper {
     width: 100%;
     height: 200px;
@@ -59,8 +71,9 @@ const Wrapper = styled.div`
     padding: 10px;
 
     input {
-      width: 100%;
-      height: 100%;
+      /* width: 100%; */
+      /* height: 100%; */
+      padding: 0 10px;
       outline: none;
       border: none;
       padding: 0;

@@ -11,11 +11,13 @@ export default function Templates() {
   return (
     <Wrapper>
       <Page title='CV Templates' />
-      <div className='bg-dark'>
+      <div className=''>
         <div className='container'>
           <div className='row py-5'>
-            <div className='col-md-10 mx-auto text-center text-white'>
-              <h1 className='display-3'>Chose from our best cv template</h1>
+            <div className='col-md-10 mx-auto text-center'>
+              <h1 className='display-3 font-w-900'>
+                Chose from our best cv template
+              </h1>
             </div>
           </div>
         </div>

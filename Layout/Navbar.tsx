@@ -49,4 +49,10 @@ const Wrapper = styled.div`
       }
     }
   }
+
+  @media (max-width: 768px) {
+    .nav-list {
+      flex-flow: column !important;
+    }
+  }
 `;

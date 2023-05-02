@@ -14,7 +14,7 @@ export default function InputTag({
   classNames: string;
 }) {
   const [input, setInput] = React.useState<string>('');
-  const [isKeyReleased, setIsKeyReleased] = React.useState(false);
+  const [isKeyReleased, setIsKeyReleased] = React.useState<boolean>(false);
 
   const onKeyDown = (e) => {
     const { key } = e;
