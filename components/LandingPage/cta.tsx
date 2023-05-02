@@ -27,7 +27,7 @@ export default function CTA() {
 }
 
 const Wrapper = styled.section`
-  margin: 4rem 0;
+  padding: 4rem 0;
   background-color: #000;
   color: #fff;
   text-align: center;

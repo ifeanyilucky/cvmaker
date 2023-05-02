@@ -1,11 +1,14 @@
 import React, { useRef } from 'react';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
+import { jsPDF } from 'jspdf';
+import html2canvas from 'html2canvas';
 import Editor from '../../../components/Editor';
 // import ResumePreview from '../../../components/resume-preview';
 import { ResumeProps } from '../../../types/resume';
 import Page from '../../../Layout/Page';
 import { templates } from '../../../components/templates';
+import LoadingOverlay from '../../../components/LoadingOverlay';
 
 export default function ResumeEdit() {
   const [values, setValues] = React.useState<ResumeProps>({
@@ -33,6 +36,7 @@ export default function ResumeEdit() {
   )[0];
 
   const previewRoot = useRef<HTMLDivElement>();
+  const printableArea = useRef<HTMLDivElement>();
   // handle print
   const handlePrint = () => {
     const printContent = document.getElementById('printableArea').innerHTML;
@@ -40,6 +44,19 @@ export default function ResumeEdit() {
     document.body.innerHTML = printContent;
     window.print();
     document.body.innerHTML = originalContent;
+  };
+
+  const handlePdfDownload: () => void = async () => {
+    const element = printableArea.current as HTMLDivElement;
+    const canvas = await html2canvas(element);
+    const data = canvas.toDataURL('image/png');
+
+    const pdf = new jsPDF();
+    const imgProperties = pdf.getImageProperties(data);
+    const pdfWidth = pdf.internal.pageSize.getWidth();
+    const pdfHeight = (imgProperties.height * pdfWidth) / imgProperties.width;
+    pdf.addImage(data, 'PNG', 0, 0, pdfWidth, pdfHeight);
+    pdf.save(`${values.firstName} CV`);
   };
 
   return (
@@ -52,7 +69,7 @@ export default function ResumeEdit() {
         }
       />
       {!selectedTemplate && !selectedTemplate?.element ? (
-        <h4>Loading...</h4>
+        <LoadingOverlay />
       ) : (
         <div className='container-fluid'>
           <div className='row'>
@@ -74,7 +91,11 @@ export default function ResumeEdit() {
 
                 {/* <ResumePreview values={values} /> */}
                 <div className='preview-wrapper'>
-                  <div className='preview' id='printableArea'>
+                  <div
+                    className='preview'
+                    id='printableArea'
+                    ref={printableArea}
+                  >
                     <selectedTemplate.element values={values} />
                   </div>
                 </div>
@@ -87,7 +108,12 @@ export default function ResumeEdit() {
                     Print CV
                   </button>
                   <div className='mx-2' />
-                  <button className='primary-button'>Download CV</button>
+                  <button
+                    className='primary-button'
+                    onClick={handlePdfDownload}
+                  >
+                    Download CV
+                  </button>
                 </div>
               </div>
             </div>
